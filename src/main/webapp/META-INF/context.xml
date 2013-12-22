@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/Spitter">
+    <ResourceLink global="jdbc/springinactiondb" name="jdbc/springinactiondb" type="javax.sql.Datasource"/>
+</Context>
