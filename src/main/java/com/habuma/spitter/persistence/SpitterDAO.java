@@ -1,5 +1,7 @@
 package com.habuma.spitter.persistence;
 
+import com.habuma.spitter.domain.Spitter;
+
 /**
  *
  * @author ralvarado

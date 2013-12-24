@@ -1,13 +1,23 @@
-package com.habuma.spitter.persistence;
+package com.habuma.spitter.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author ralvarado
  */
+@Entity
+@Table(name = "spitter")
 public class Spitter {
-    private static final String template = 
-            "Spitter -> id: %d, username: %s, fullname: %s, " +  
-            "password: %s, email: %s, updateByEmail: %b";
+
+    private static final String template =
+            "Spitter -> id: %d, username: %s, fullname: %s, "
+            + "password: %s, email: %s, updateByEmail: %b";
     private Long id;
     private String username;
     private String fullname;
@@ -17,9 +27,9 @@ public class Spitter {
 
     public Spitter() {
     }
-  
-    public Spitter(Long id, String username, String fullname, String password, 
-                   String email, Boolean updateByEmail) {
+
+    public Spitter(Long id, String username, String fullname, String password,
+            String email, Boolean updateByEmail) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -28,6 +38,9 @@ public class Spitter {
         this.updateByEmail = updateByEmail;
     }
 
+    @Id
+    @Column(name = "id", columnDefinition = "serial")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -36,6 +49,7 @@ public class Spitter {
         this.id = id;
     }
 
+    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -44,6 +58,7 @@ public class Spitter {
         this.username = username;
     }
 
+    @Column(name = "fullname")
     public String getFullname() {
         return fullname;
     }
@@ -52,6 +67,7 @@ public class Spitter {
         this.fullname = fullname;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -60,6 +76,7 @@ public class Spitter {
         this.password = password;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -68,6 +85,7 @@ public class Spitter {
         this.email = email;
     }
 
+    @Column(name = "updateByEmail")
     public Boolean isUpdateByEmail() {
         return updateByEmail;
     }
@@ -78,7 +96,7 @@ public class Spitter {
 
     @Override
     public String toString() {
-        return String.format(template, id, username, fullname, 
-                             password, email, updateByEmail);
+        return String.format(template, id, username, fullname,
+                password, email, updateByEmail);
     }
 }
