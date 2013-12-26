@@ -4,7 +4,6 @@ import com.habuma.spitter.domain.Spitter;
 import com.habuma.spitter.persistence.SpitterDAO;
 import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HelloController {
     
     @Autowired
-    @Qualifier("hibernate")
     SpitterDAO spitterDAO;
     
     @RequestMapping(method = RequestMethod.GET)
