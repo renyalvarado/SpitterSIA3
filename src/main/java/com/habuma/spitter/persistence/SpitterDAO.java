@@ -8,5 +8,5 @@ import com.habuma.spitter.domain.Spitter;
  */
 public interface SpitterDAO {
     void addSpitter(Spitter spitter);
-    Spitter getSpitterById(Long id);
+    Spitter getSpitterById(Integer id);
 }

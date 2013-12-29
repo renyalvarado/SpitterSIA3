@@ -17,14 +17,13 @@ public class JpaSpitterDAO implements SpitterDAO {
     @PersistenceContext
     private EntityManager entityManager;
     
-    
     @Override
     public void addSpitter(Spitter spitter) {
         entityManager.merge(spitter);
     }
 
     @Override
-    public Spitter getSpitterById(Long id) {
+    public Spitter getSpitterById(Integer id) {
         return entityManager.find(Spitter.class, id);
     }
     

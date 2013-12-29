@@ -1,11 +1,22 @@
 package com.habuma.spitter.domain;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -13,43 +24,65 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "spitter")
-public class Spitter {
-
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Spitter.findAll", query = "SELECT s FROM Spitter s"),
+    @NamedQuery(name = "Spitter.findById", query = "SELECT s FROM Spitter s WHERE s.id = :id"),
+    @NamedQuery(name = "Spitter.findByUsername", query = "SELECT s FROM Spitter s WHERE s.username = :username"),
+    @NamedQuery(name = "Spitter.findByFullname", query = "SELECT s FROM Spitter s WHERE s.fullname = :fullname"),
+    @NamedQuery(name = "Spitter.findByPassword", query = "SELECT s FROM Spitter s WHERE s.password = :password"),
+    @NamedQuery(name = "Spitter.findByEmail", query = "SELECT s FROM Spitter s WHERE s.email = :email"),
+    @NamedQuery(name = "Spitter.findByUpdatebyemail", query = "SELECT s FROM Spitter s WHERE s.updatebyemail = :updatebyemail")})
+public class Spitter implements Serializable {
     private static final String template =
             "Spitter -> id: %d, username: %s, fullname: %s, "
-            + "password: %s, email: %s, updateByEmail: %b";
-    private Long id;
+          + "password: %s, email: %s, updatebyemail: %b";
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id", columnDefinition = "serial")
+    private Integer id;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 30)
+    @Column(name = "username")
     private String username;
+    @Size(max = 100)
+    @Column(name = "fullname")
     private String fullname;
+    @Size(max = 50)
+    @Column(name = "password")
     private String password;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 100)
+    @Column(name = "email")
     private String email;
-    private Boolean updateByEmail;
+    @Column(name = "updatebyemail")
+    private Boolean updatebyemail;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "spitter")
+    private List<Spittle> spittleList;
 
     public Spitter() {
     }
 
-    public Spitter(Long id, String username, String fullname, String password,
-            String email, Boolean updateByEmail) {
+    public Spitter(Integer id) {
         this.id = id;
-        this.username = username;
-        this.fullname = fullname;
-        this.password = password;
-        this.email = email;
-        this.updateByEmail = updateByEmail;
     }
 
-    @Id
-    @Column(name = "id", columnDefinition = "serial")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long getId() {
+    public Spitter(Integer id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    @Column(name = "username")
     public String getUsername() {
         return username;
     }
@@ -58,7 +91,6 @@ public class Spitter {
         this.username = username;
     }
 
-    @Column(name = "fullname")
     public String getFullname() {
         return fullname;
     }
@@ -67,7 +99,6 @@ public class Spitter {
         this.fullname = fullname;
     }
 
-    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -76,7 +107,6 @@ public class Spitter {
         this.password = password;
     }
 
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -85,18 +115,47 @@ public class Spitter {
         this.email = email;
     }
 
-    @Column(name = "updateByEmail")
-    public Boolean isUpdateByEmail() {
-        return updateByEmail;
+    public Boolean getUpdatebyemail() {
+        return updatebyemail;
     }
 
-    public void setUpdateByEmail(Boolean updateByEmail) {
-        this.updateByEmail = updateByEmail;
+    public void setUpdatebyemail(Boolean updatebyemail) {
+        this.updatebyemail = updatebyemail;
+    }
+
+    @XmlTransient
+    public List<Spittle> getSpittleList() {
+        return spittleList;
+    }
+
+    public void setSpittleList(List<Spittle> spittleList) {
+        this.spittleList = spittleList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Spitter)) {
+            return false;
+        }
+        Spitter other = (Spitter) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
         return String.format(template, id, username, fullname,
-                password, email, updateByEmail);
+                password, email, updatebyemail);
     }
+    
 }
