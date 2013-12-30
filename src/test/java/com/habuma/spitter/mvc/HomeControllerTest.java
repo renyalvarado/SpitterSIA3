@@ -58,6 +58,6 @@ public class HomeControllerTest {
         Map<String, Object> model = new HashMap<String, Object>();
         
         String viewName = homeController.showHomePage(model);
-        assertEquals("hello", viewName);
+        assertEquals("contact", viewName);
     }
 }

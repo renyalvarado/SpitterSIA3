@@ -33,6 +33,6 @@ public class HomeController {
     public String showHomePage(Map<String, Object> model) {
         List<Spittle> lastSpittles = spitterService.getRecentSpittles(DEFAULT_SPITTLES_PER_PAGE);
         model.put("message", lastSpittles);
-        return "hello";
+        return "contact";
     }
 }
