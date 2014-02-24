@@ -32,7 +32,8 @@ public class HomeController {
     @Transactional
     public String showHomePage(Map<String, Object> model) {
         List<Spittle> lastSpittles = spitterService.getRecentSpittles(DEFAULT_SPITTLES_PER_PAGE);
-        model.put("message", lastSpittles);
-        return "contact";
+        model.put("message", "Hola Mundo!");
+        model.put("spittles", lastSpittles);
+        return "home";
     }
 }

@@ -1,4 +1,4 @@
 <%@ page pageEncoding="UTF-8" %>
-<div id="footer">
-    <h1>Footer</h1>
+<div class="footer">
+    Copyright announcement ©
 </div>

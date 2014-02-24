@@ -1,0 +1,34 @@
+.spittleList {
+    border: 2px solid #000000;
+    border-radius: 20px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 20px 10px;
+}
+
+.spittleItem {
+    height: 60px;
+}
+
+.spittleItem:first-child {
+    margin-top: 10px;
+}
+
+.spittleSpitterImage {
+    float: left;
+    margin-right: 10px;
+}
+
+.spittleWhen {
+    font-size: x-small;
+}
+
+.spittleListText {
+    display: block;
+}
+
+.footer {
+    font-size: x-small;
+    text-align: center;
+}
