@@ -4,6 +4,34 @@
 <%@ taglib prefix="t" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<div class="login">
+    <h2>Please Sign In</h2>
+    <form action="#" class="form-login">
+        <span class="login-username">
+            <label for="usename">Username</label>
+            <input type="text" id="username" name="name"/>
+        </span>
+        <span class="login-password">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+        </span>
+        <span class="login-rememberme">
+            <input type="checkbox" name="rememberme" value="rememberme">Remember me<br>
+        </span>
+        <span class="login-signin-forgot">
+            <button type="submit">Sig In!</button>
+            <a href="#">Forgot</a>
+        </span>
+    </form>
+    <div class="new-account">
+        <h3>Want an account?</h3>
+        <p>
+            <a href="#">Join for Free!</a>
+        </p>
+        <p>It's fast an easy!</p>
+    </div>
+</div>
+
 <div class="content">
     <h2>
         A global community of friends and strangers spitting out their

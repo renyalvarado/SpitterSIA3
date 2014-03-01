@@ -8,6 +8,7 @@
         <title>
             <tiles:insertAttribute name="title" ignore="true" />
         </title>
+            <link rel="shortcut icon" href="<c:url value='/static/img/favicon.ico'/>" type="image/x-icon" /> 
         <link rel="stylesheet" type="text/css" media="screen"
               href="<c:url value='/static/css/main.css'/>" />
     </head>
