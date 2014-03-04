@@ -4,23 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="content">
-    <h2>
-        A global community of friends and strangers spitting out their
-        inner-most and personal thoughts on the web for everyone else to
-        see.
-    </h2>
-    <h3>Look at what these people are spitting right now...</h3>
+    <h2>Spittles for ${spitter.username}</h2>
     <div class='spittleList'>
-        <c:forEach var="spittle" items="${spittles}">
+        <c:forEach var="spittle" items="${spittleList}">
             <s:url value="/spitters/{spitterName}" var="spitterUrl" >
-                <s:param name="spitterName" value="${spittle.spitter.username}"/>
+                <s:param name="spitterName" value="${spitter.username}"/>
             </s:url>
             <div class="spittleItem">
                 <span class="spittleSpitterImage">
-                    <img src="<c:url value='/static/img/${spittle.spitter.username}_48x48.png'/>" alt="${spittle.spitter.username}"/>
+                    <img src="<c:url value='/static/img/${spitter.username}_48x48.png'/>" alt="${spitter.username}"/>
                 </span>
                 <span class="spittleSpitter">
-                    <a href="${spitterUrl}">${spittle.spitter.username}</a>
+                    <a href="${spitterUrl}">${spitter.username}</a>
                 </span>
                 <span class="spittleWhen">
                     <fmt:formatDate type="both" value="${spittle.when}"/>

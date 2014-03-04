@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Spittle.findAll", query = "SELECT s FROM Spittle s"),
     @NamedQuery(name = "Spittle.findAllOrderByWhen", 
                 query = "SELECT s FROM Spittle s JOIN FETCH s.spitter ORDER BY s.when DESC"),
+    @NamedQuery(name = "Spittle.findBySpitterOrderByWhen", 
+                query = "SELECT s FROM Spittle s JOIN FETCH s.spitter sp WHERE sp = :sp ORDER BY s.when DESC"),
     @NamedQuery(name = "Spittle.findById", query = "SELECT s FROM Spittle s WHERE s.id = :id"),
     @NamedQuery(name = "Spittle.findByText", query = "SELECT s FROM Spittle s WHERE s.text = :text"),
     @NamedQuery(name = "Spittle.findByWhen", query = "SELECT s FROM Spittle s WHERE s.when = :when")})
