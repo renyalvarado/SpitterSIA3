@@ -17,7 +17,7 @@
             </s:url>
             <div class="spittleItem">
                 <span class="spittleSpitterImage">
-                    <img src="<c:url value='/static/img/${spittle.spitter.username}_48x48.png'/>" alt="${spittle.spitter.username}"/>
+                    <img src="<c:url value='/img/spitter/${spittle.spitter.username}_48x48.png'/>" alt="${spittle.spitter.username}"/>
                 </span>
                 <span class="spittleSpitter">
                     <a href="${spitterUrl}">${spittle.spitter.username}</a>

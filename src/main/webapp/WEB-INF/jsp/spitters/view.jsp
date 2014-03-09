@@ -8,7 +8,8 @@
                 Image:
             </span>
             <span class="spitter-info-value">
-                <img src="<c:url value='/static/img/${spitter.username}_48x48.png'/>" alt="${spitter.username}"/>
+                <img alt="${spitter.username}"
+                     src="<c:url value='/img/spitter/${spitter.username}_48x48.png'/>" />
             </span>
         </div>
         <div class="spitter-info-element">

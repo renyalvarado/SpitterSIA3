@@ -21,6 +21,7 @@
         <javaee.version>6.0</javaee.version>
         <tiles.version>2.2.2</tiles.version>
         <logback.version>1.0.13</logback.version>
+        <commons-io.version>1.4</commons-io.version>
     </properties>
 
     <dependencies>
@@ -134,6 +135,15 @@
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
+        
+        <!-- File Upload -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+            <type>jar</type>
+        </dependency>
+        
         <!-- Testing -->
         <dependency>
             <groupId>junit</groupId>

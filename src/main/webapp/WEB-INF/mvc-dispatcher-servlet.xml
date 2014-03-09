@@ -4,7 +4,16 @@
        xsi:schemaLocation="
               http://www.springframework.org/schema/beans     
               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
- 
+    
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:META-INF/basic.properties</value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
     <import resource="mvc-spring.xml" /> 
     <import resource="data-spring.xml" /> 
     <import resource="tiles-spring.xml" />    

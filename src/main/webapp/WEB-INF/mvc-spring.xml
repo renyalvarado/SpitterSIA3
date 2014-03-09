@@ -17,7 +17,13 @@
                                           com.habuma.spitter.persistence,
                                           com.habuma.spitter.mvc" />
     <bean class="org.springframework.context.support.ResourceBundleMessageSource"
-              id="messageSource">
+          id="messageSource">
         <property name="basename" value="META-INF/messages"/>
+    </bean>
+    
+    <mvc:resources mapping="/img/spitter/**" location="${imag.spitter.directory}"/>
+    
+    <bean id="multipartResolver"
+      class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
     </bean>
 </beans>

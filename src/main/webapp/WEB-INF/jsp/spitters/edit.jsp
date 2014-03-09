@@ -3,7 +3,7 @@
 
 <div class="spitter-info">
     <h2>Create a free Spitter account</h2>
-    <sf:form method="post"  modelAttribute="spitter">
+    <sf:form method="post"  modelAttribute="spitter" enctype="multipart/form-data">
         <fieldset>
             <div class="spitter-info-element">
                 <span class="spitter-info-title">
@@ -26,6 +26,15 @@
                     <sf:input path="fullname" size="30" cssErrorClass="input-error"
                               maxlength="100" id="user_full_name"/>
                     <sf:errors path="fullname" cssClass="error"/>
+                </span>
+            </div>
+            <div class="spitter-info-element">
+                <span class="spitter-info-title">
+                    <label for="image">Profile Image:</label>
+                </span>
+                <span class="spitter-info-input-section">
+                    <input id="image" name="image" type="file"/>
+                    <sf:errors cssClass="error"/>
                 </span>
             </div>
             <div class="spitter-info-element">
